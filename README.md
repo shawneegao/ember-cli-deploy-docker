@@ -1,4 +1,4 @@
-# ember-cli-deploy-json-config
+# ember-cli-deploy-docker
 
 > An ember-cli-deploy plugin that pushes container images to your container registry.
 
