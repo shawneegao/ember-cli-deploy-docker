@@ -22,17 +22,17 @@ module.exports = {
           return context.commandOptions.revision || (context.revisionData && context.revisionData.revisionKey);
         }
       },
-      requiredConfig:{
-        ['repo','pathToProject'],
-      },
       configure:function(context){
 
         ['name','repo','pathToProject'].forEach(this.applyDefaultConfigProperty.bind(this));
-
-        /*logs the variables you have configured for clarity*/
-        this.log('you have configured the docker plugin with the following:')
-        this.log('repo:'+this.readConfig("repo"));
-        this.log('path to project:'+this.readConfig("pathToProject"));
+        var repo = this.readConfig("repo");
+        var pathToProject= this.readConfig("pathToProject");
+        if (!repo || !pathToProject){
+          throw "Please check that you have a valid repo or parth to Project set in deploy.js"
+        }
+        else{
+          this.log("configurations okay!")
+        }
       },
       //end of configs
 
