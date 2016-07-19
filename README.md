@@ -2,7 +2,6 @@
 
 > An ember-cli-deploy plugin that pushes container images to your container registry.
 
-[![](https://ember-cli-deploy.github.io/ember-cli-deploy-version-badges/plugins/ember-cli-deploy-json-config.svg)](http://ember-cli-deploy.github.io/ember-cli-deploy-version-badges/)
 
 This plugin creates and uploads a container image to a container registry. For more information on docker please refer to [Docker's Website][4].
 
@@ -11,6 +10,13 @@ This plugin creates and uploads a container image to a container registry. For m
 A plugin is an addon that can be executed as a part of the ember-cli-deploy pipeline. A plugin will implement one or more of the ember-cli-deploy's pipeline hooks.
 
 For more information on what plugins are and how they work, please refer to the [Plugin Documentation][1].
+
+## Installation
+Run the following command in your terminal:
+
+```bash
+ember install ember-cli-deploy-docker
+```
 
 ## Prerequisites
 
