@@ -1,15 +1,12 @@
 # ember-cli-deploy-docker
 
-> An ember-cli-deploy plugin that pushes container images to your container registry.
-
-
-This plugin creates and uploads a container image to a container registry. For more information on docker please refer to [Docker's Website][4].
+This plugin builds and pushes a container image to a container registry. For more information on docker please refer to [Docker's Website][4].
 
 ## What is an ember-cli-deploy plugin?
 
 A plugin is an addon that can be executed as a part of the ember-cli-deploy pipeline. A plugin will implement one or more of the ember-cli-deploy's pipeline hooks.
 
-For more information on what plugins are and how they work, please refer to the [Plugin Documentation][1].
+For more information on plugins refer to the [Plugin Documentation][1].
 
 ## Installation
 Run the following command in your terminal:
@@ -26,7 +23,7 @@ The following properties are expected to be present on the deployment `context` 
 - `project.root`                (provided by [ember-cli-deploy][3])
 - `revisionKey`                 (provided by [ember-cli-deploy-revision-data][5])
 
-**The plugin also assumes that the user is logged into their container registry. It will error out otherwise.**
+**The plugin also assumes that the user is logged into their container registry through their terminal. The upload hook will cause the pipeline to abort otherwise. Run the command & docker login images.yourdomain.com to be authenticated.**
 
 ## ember-cli-deploy Hooks Implemented
 
@@ -37,17 +34,18 @@ For detailed information on what plugin hooks are and how they work, please refe
 - `upload`
 
 These hooks are flexible. Feel free to make changes to this plugin's index.js if different hooks are preferred.
+However if you are using the default name configurations, please make sure that revision-data plugin is installed and that it executes before the docker plugin.
 
 ## Configuration Options
 
 For detailed information on how configuration of plugins works, please refer to the [Plugin Documentation][1].
-This plugin will cause the deployment pipeline to abort if any of the necessary configurations are left empty.
+
+**Make sure all of the properties below are correctly configured, otherwise the pipline will abort**
 
 ### name
 
 The default behavior for name is to use the revision key from the [ember-cli-deploy-revision-data][5] plugin.
-If an alternative naming scheme is preferred simply set the name in deploy.js.
-**If neither is set the deploy pipline will abort.**
+If an alternative naming scheme is preferred simply set the name in your main ember project's config/deploy.js.
 
 ### repo
 
